@@ -3,25 +3,36 @@
     <div class="login_box">
       <!-- 头像区 -->
       <div class="avator_box">
-        <img src="../assets/logo.png" alt="">
+        <img src="../assets/logo.png" alt="" />
       </div>
       <!-- 登录表单区 -->
-      <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login_form">
+      <el-form
+        ref="loginFormRef"
+        :model="loginForm"
+        :rules="loginFormRules"
+        label-width="0px"
+        class="login_form"
+      >
         <!-- username -->
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username"
-          prefix-icon="iconfont icon-user"></el-input>
+          <el-input
+            v-model="loginForm.username"
+            prefix-icon="iconfont icon-user"
+          ></el-input>
         </el-form-item>
         <!-- password -->
         <el-form-item prop="password">
-          <el-input v-model="loginForm.password" prefix-icon="iconfont icon-3702mima" type="password"></el-input>
+          <el-input
+            v-model="loginForm.password"
+            prefix-icon="iconfont icon-3702mima"
+            type="password"
+          ></el-input>
         </el-form-item>
         <!-- button -->
         <el-form-item class="btns">
           <el-button type="primary" @click="login">登录</el-button>
           <el-button type="info" @click="resetLoginForm">重置</el-button>
         </el-form-item>
-
       </el-form>
     </div>
   </div>
@@ -29,7 +40,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       // 这是登录表单的数据绑定对象
       loginForm: {
@@ -51,11 +62,11 @@ export default {
   },
   methods: {
     // 重置表单
-    resetLoginForm () {
+    resetLoginForm() {
       // console.log(this);
       this.$refs.loginFormRef.resetFields()
     },
-    login () {
+    login() {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) return false
         const { data: res } = await this.$http.post('login', this.loginForm)
@@ -65,7 +76,7 @@ export default {
         // 项目中出了 登录之外的其他API接口，必须在登录之后才能访问
         // token只应在当前网站打开期间生效，所以将token保存在sessionstorage中
         // 通过编程式导航跳转到后台主页，路由地址是/home
-        console.log(res)
+        // console.log(res)
         window.sessionStorage.setItem('token', res.data.token)
         this.$router.push('/home')
       })
@@ -99,7 +110,7 @@ export default {
     box-shadow: 0 0 10px #ddd;
     position: absolute;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: #fff;
     img {
       width: 100%;
