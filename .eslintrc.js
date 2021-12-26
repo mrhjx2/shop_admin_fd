@@ -19,7 +19,8 @@ module.exports = {
     "no-unused-vars":"off",
     "no-console":"off",
     "no-irregular-whitespace":"off",
-    "no-debugger": "off"
+    "no-debugger": "off",
+    "no-useless-return:": "off"
 
     // "comma-dangle": [2, "always-multiline"]
   }
